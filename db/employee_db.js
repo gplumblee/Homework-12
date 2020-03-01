@@ -53,8 +53,8 @@ const db ={
     return connection.query("DELETE FROM role WHERE id = ?", id)
   },
 
-  updateEmployeeRole: function(emp, role) {
-    return connection.query("UPDATE employee SET role = ? WHERE id = ?", emp, role);
+  updateEmployeeRole(employeeId, roleId) {
+    return connection.query("UPDATE employee SET role_id = id FROM department WHERE ? = ?", employeeId, roleId);
   },
 
   findAllEmployeesByDepartment: function(id) {
