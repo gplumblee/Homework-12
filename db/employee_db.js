@@ -41,28 +41,41 @@ const db ={
     return connection.query("SELECT * FROM role")
   },
 
-  removeEmployee: function(id){
-    return connection.query("DELETE FROM employee WHERE id = ?", id)
-  },
-
-  removeDepartment: function(id){
-    return connection.query("DELETE FROM department WHERE id = ?", id)
-  },
-
-  removeRole: function(id){
-    return connection.query("DELETE FROM role WHERE id = ?", id)
-  },
-
-  updateEmployeeRole(employeeId, roleId) {
+  // Needs correct SQL query:
+  updateEmployeeRole: function(employeeId, roleId) {
     return connection.query("UPDATE employee SET role_id = id FROM department WHERE ? = ?", employeeId, roleId);
   },
 
-  findAllEmployeesByDepartment: function(id) {
-    return connection.query("SELECT FROM employee WHERE id = ?", id)
+  // Needs correct SQL query:
+  findAllPossibleManagers: function(employeeId) {
+    return connection.query("", employeeId)
   },
 
-  findAllEmployeesByManager: function(id) {
-    return connection.query("SELECT FROM role WHERE id = ?", id)
+  // Needs correct SQL query:
+  updateEmployeeManager: function(employeeId, managerId) {
+    return connection.query("", employeeId, managerId)
+  },
+
+  // Needs correct SQL query:
+  findAllEmployeesByManager: function(managerId) {
+    return connection.query("", managerId)
+  },
+
+  removeEmployee: function(employeeId){
+    return connection.query("DELETE FROM employee WHERE id = ?", employeeId)
+  },
+
+  removeDepartment: function(departmentId){
+    return connection.query("DELETE FROM department WHERE id = ?", departmentId)
+  },
+
+  removeRole: function(roleId){
+    return connection.query("DELETE FROM role WHERE id = ?", roleId)
+  },
+
+  // Needs correct SQL query:
+  findAllEmployeesByDepartment: function(departmentId) {
+    return connection.query("", departmentId)
   }
 
 }
